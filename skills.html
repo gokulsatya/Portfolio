@@ -5,52 +5,9 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<style>
-			/* Custom Styles to Fix Sidebar Overlap and iframe Visibility */
-			#sidebar {
-                width: 100%; /* Full-width sidebar for small screens */
-                max-width: 20%; /* Sidebar max width for larger screens */
-                position: fixed;
-                height: 100%;
-                overflow: auto; /* Scrollable if content exceeds */
-                z-index: 10;
-                background: #111;
-            }
-			/* Main Wrapper Adjustments */
-			#wrapper {
-				margin-left: 20%; /* Leaves space for sidebar */
-				width: 80%;
-				transition: all 0.3s ease; /* Smooth transition for responsive adjustments */
-			}
-
-			/* Responsive Design: For smaller screens */
-			@media screen and (max-width: 768px) {
-				#sidebar {
-					width: 100%; /* Full width for small devices */
-					height: auto; /* Sidebar height adjustment */
-					position: relative; /* Non-fixed sidebar */
-				}
-			
-			#wrapper {
-				margin-left: 0;
-				width: 100%;
-			}
-		}
-			.iframe-container {
-				width: 100%;
-				height: 100vh;
-				overflow: auto;
-			}
-
-			iframe {
-				width: 100%;
-				height: 100%;
-				border: none;
-			}
-		</style>
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
-
 		<!-- Header -->
 		<header id="header">
 			<nav>
@@ -65,100 +22,83 @@
 			<div class="inner">
 				<nav>
 					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="about.html">About Myself</a></li>
+						<li><a href="index.html">Home</a></li>			
 						<li><a href="resume.html">Resume</a></li>
 						<li><a href="internships.html">Work Experience</a></li>
-						<li><a href="projects.html">Academic Works</a></li>
-						<li><a href="volunteer.html">Volunteer Experience and Additional activities</a></li>
+						<li><a href="volunteer.html">Volunteer Experience</a></li>
+						<li><a href="projects.html">Projects</a></li>
+						<li><a href="skills.html">Skills</a></li>
 					</ul>
 				</nav>
 			</div>
 		</section>
-		<!-- Wrapper -->
-		<div id="wrapper">
 
-			<!-- Main -->
-				<section id="main" class="wrapper">
-					<div class="inner">
-						<h2>Technical skills</h2>
-						<div class="row">
-							<div class="col-6 col-12-medium">
-								<h3>Interested Areas</h3>
-								<ul>
-									<li>Security operations centre</li>
-									<li>Threat hunting</li>
-									<li>Security Compliance</li>
-									<li>GRC</li>
-									<li>Application Security</li>
-								</ul>
-							</div>
-							<div class="col-6 col-12-medium">
-								<h3>Programming Language</h3>
-								<ul>
-									<li>C</li>
-									<li>HTML</li>
-									<li>CSS</li>
-									<li>Python</li>
-									<li>SQL Database</li>
-									<li>KQL</li>
-								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-6 col-12-medium">
-								<h3>Tools</h3>
-								<ul>
-									<li>Wireshark</li>
-									<li>Metasploit</li>
-									<li>Nmap</li>
-									<li>Burp suite</li>
-									<li>Splunk</li>
-									<li>Tcpdump</li>
-									<li>Regshot</li>
-									<li>firewall (Pfsense)</li>
-									<li>Shell scripting</li>
-									<li>PowerShell</li>
-								</ul>
-							</div>
-							<div class="col-6 col-12-medium">
-								<h3>Productivity suites and frameworks</h3>
-								<ul>
-									<li>Microsoft Office 365 (excel, Power BI, Azure AD, MFA Defender ATP)</li>
-									<li>MITRE ATTACK</li>
-									<li>OWASP</li>
-									<li>Google Workspace</li>							
-								</ul>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-6 col-12-medium">
-								<h3>Operating System</h3>
-								<ul>
-									<li>Windows</li>
-									<li>Kali-Linux</li>
-									<li>Unix</li>
-									<li>MacOS</li>
-									<li>Ubuntu</li>
-								</ul>			
-							</div>
-						</div>
-					</div>
-				</section>
-		</div>
 		<!-- Wrapper -->
 		<div id="wrapper">
 			<!-- Main -->
 			<section id="main" class="wrapper">
 				<div class="inner">
-					<h1 class="major">NCL Individual Game Scouting Report</h1>
-					<div class="iframe-container">
-						<iframe src="images/personal/Gokul%20Sathiyamurthy%20-%20NCL%20Fall%202024%20Individual%20Game%20Scouting%20Report.pdf" alt="Report1"></iframe>
+					<h1 class="major">Technical skills</h1>
+					<div class="row">
+						<div class="col-6 col-12-medium">
+							<h3>Interested Areas</h3>
+							<ul>
+								<li>Security operations centre</li>
+								<li>Threat hunting</li>
+								<li>Security Compliance</li>
+								<li>GRC</li>
+								<li>Application Security</li>
+							</ul>
+						</div>
+						<div class="col-6 col-12-medium">
+							<h3>Programming Language</h3>
+							<ul>
+								<li>C</li>
+								<li>HTML</li>
+								<li>CSS</li>
+								<li>Python</li>
+								<li>SQL Database</li>
+								<li>KQL</li>
+							</ul>
+						</div>
 					</div>
-
-					<h2 class="major">NCL Team Game Scouting Report</h2>
-					<div class="iframe-container">
-						<iframe src="images/personal/Gokul%20Sathiyamurthy%20-%20NCL%20Fall%202024%20Team%20Game%20Scouting%20Report.pdf" alt="Report2"></iframe>
+					<div class="row">
+						<div class="col-6 col-12-medium">
+							<h3>Tools</h3>
+							<ul>
+								<li>Wireshark</li>
+								<li>Metasploit</li>
+								<li>Nmap</li>
+								<li>Burp suite</li>
+								<li>Splunk</li>
+								<li>Tcpdump</li>
+								<li>Regshot</li>
+								<li>firewall (Pfsense)</li>
+								<li>Shell scripting</li>
+								<li>PowerShell</li>
+							</ul>
+						</div>
+						<div class="col-6 col-12-medium">
+							<h3>Productivity suites and frameworks</h3>
+							<ul>
+								<li>Microsoft Office 365 (excel, Power BI, Azure AD, MFA Defender ATP)</li>
+								<li>MITRE ATTACK</li>
+								<li>OWASP</li>
+								<li>Google Workspace</li>							
+							</ul>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-6 col-12-medium">
+							<h3>Operating System</h3>
+							<ul>
+								<li>Windows</li>
+								<li>Kali-Linux</li>
+								<li>Unix</li>
+								<li>MacOS</li>
+								<li>Ubuntu</li>
+							</ul>			
+						</div>
 					</div>
 				</div>
 			</section>
@@ -168,7 +108,7 @@
 		<footer id="footer" class="wrapper style1-alt">
 			<div class="inner">
 				<ul class="menu">
-					<li>                                 PORTFOLIO. DESIGN BY: GOKUL SATHIYAMURTHY</li>
+					<li>PORTFOLIO. DESIGN BY: GOKUL SATHIYAMURTHY</li>
 				</ul>
 			</div>
 		</footer>
