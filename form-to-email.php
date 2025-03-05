@@ -1,5 +1,5 @@
 <?php
-  $to = "gokul.sathiyamurthy@pace.edu";
+  $to = "sathiyamurthygokul@gmail.com";
   $subject = "This is subject";
   
   $message = "<b>This is HTML message.</b>";
