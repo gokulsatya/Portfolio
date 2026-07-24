@@ -143,6 +143,128 @@ body::after {
 /* Anchor targets clear the sticky header */
 main section[id] { scroll-margin-top: 74px; }
 
+/* ---- Boot preloader (JS-only; session-once) ---- */
+#boot {
+	display: none;
+	position: fixed; inset: 0; z-index: 200;
+	background: var(--bg);
+	align-items: center; justify-content: center;
+	transition: transform 0.5s cubic-bezier(0.7, 0, 0.3, 1);
+}
+.js.booting #boot { display: flex; }
+#boot.done { transform: translateY(-101%); }
+#boot pre {
+	margin: 0;
+	font-family: var(--mono); font-size: clamp(12px, 2.6vw, 15px);
+	line-height: 2;
+	color: var(--muted);
+}
+#boot pre .ok { color: var(--accent); }
+/* Hold hero entrance until the boot cover lifts */
+.booting .hero-kicker, .booting .hero h1, .booting .hero .term,
+.booting .hero-summary, .booting .hero-now, .booting .hero .btn-row,
+.booting .hero-photo { animation-play-state: paused !important; }
+
+/* ---- Marquee ticker ---- */
+.marquee {
+	overflow: hidden;
+	border-top: 1px solid var(--border);
+	border-bottom: 1px solid var(--border);
+	padding: 18px 0;
+	user-select: none;
+}
+.marquee-track {
+	display: inline-flex;
+	white-space: nowrap;
+	animation: marquee 26s linear infinite;
+}
+.marquee-track span {
+	font-family: var(--mono);
+	font-size: clamp(1.3rem, 3.2vw, 2.1rem);
+	font-weight: 700;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: transparent;
+	-webkit-text-stroke: 1px rgba(0, 224, 151, 0.55);
+	padding-right: 0.5em;
+}
+@supports not (-webkit-text-stroke: 1px black) {
+	.marquee-track span { color: var(--faint); }
+}
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* ---- Editorial section headers ---- */
+.sec-head {
+	display: flex; align-items: baseline; gap: 18px;
+	border-top: 1px solid var(--border);
+	padding-top: 30px;
+	margin-bottom: 34px;
+}
+.sec-index {
+	font-family: var(--mono);
+	font-size: clamp(2.4rem, 6.5vw, 4rem);
+	font-weight: 700;
+	line-height: 1;
+	color: transparent;
+	-webkit-text-stroke: 1px rgba(0, 224, 151, 0.45);
+}
+@supports not (-webkit-text-stroke: 1px black) {
+	.sec-index { color: var(--faint); }
+}
+.sec-title-xl {
+	font-size: clamp(1.7rem, 4.5vw, 2.5rem);
+	font-weight: 600;
+	letter-spacing: -0.02em;
+	margin: 0;
+}
+
+/* ---- Giant contact CTA ---- */
+.talk-kicker { font-family: var(--mono); font-size: 14px; color: var(--muted); margin-bottom: 6px; }
+.talk-link {
+	display: inline-block;
+	font-family: var(--mono);
+	font-size: clamp(2.4rem, 8.5vw, 5.6rem);
+	font-weight: 700;
+	letter-spacing: -0.03em;
+	line-height: 1.1;
+	margin-bottom: 34px;
+	color: var(--text);
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+.talk-link:hover { text-decoration: none; transform: translateX(6px); }
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+	.talk-link {
+		background: linear-gradient(115deg, #f2f7fb 35%, var(--accent) 70%, var(--accent2));
+		-webkit-background-clip: text;
+		background-clip: text;
+		-webkit-text-fill-color: transparent;
+		color: transparent;
+	}
+	.talk-link:hover { filter: drop-shadow(0 0 26px rgba(0, 224, 151, 0.3)); }
+}
+
+/* ---- Cursor ring (mouse-only accent; native cursor stays visible) ---- */
+#cursor-ring {
+	display: none;
+	position: fixed; top: 0; left: 0;
+	width: 34px; height: 34px;
+	border: 1.5px solid rgba(0, 224, 151, 0.65);
+	border-radius: 50%;
+	pointer-events: none;
+	z-index: 120;
+	transform: translate3d(-1000px, -1000px, 0);
+	transition: width 0.18s ease, height 0.18s ease, border-color 0.18s ease, margin 0.18s ease;
+	will-change: transform;
+}
+#cursor-ring.grow {
+	width: 52px; height: 52px;
+	margin-left: -9px; margin-top: -9px; /* keep the grown ring centered */
+	border-color: rgba(42, 216, 255, 0.8);
+}
+@media (hover: hover) and (pointer: fine) {
+	.js #cursor-ring { display: block; }
+}
+
 /* ---- Header / nav ---- */
 .site-header {
 	position: sticky; top: 0; z-index: 50;
@@ -728,4 +850,5 @@ html { scrollbar-color: var(--border-strong) var(--bg); }
 	.typed-caret, .brand .prompt-caret { animation: none; }
 	.reveal { opacity: 1; transform: none; }
 	.js #spotlight { display: none; }
+	.js #cursor-ring { display: none; }
 }
