@@ -21,21 +21,22 @@
 </head>
 <body>
 
+	<div id="progress" aria-hidden="true"></div>
 	<a class="skip-link" href="#main">Skip to content</a>
 
 	<header class="site-header">
 		<div class="container nav-row">
-			<a class="brand" href="index.html" aria-label="Home"><span class="prompt-user">gokul@soc</span>:~$<span class="prompt-caret" aria-hidden="true"></span></a>
+			<a class="brand" href="#top" aria-label="Back to top"><span class="prompt-user">gokul@soc</span>:~$<span class="prompt-caret" aria-hidden="true"></span></a>
 			<button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">menu</button>
-			<nav id="site-nav" class="site-nav" aria-label="Main navigation">
+			<nav id="site-nav" class="site-nav" aria-label="Sections">
 				<ul>
-					<li><a href="about.html">about</a></li>
-					<li><a href="internships.html">experience</a></li>
-					<li><a href="projects.html">projects</a></li>
-					<li><a href="skills.html">skills</a></li>
-					<li><a href="Certifications.html">certifications</a></li>
-					<li><a href="volunteer.html">volunteer</a></li>
-					<li><a href="resume.html">resume</a></li>
+					<li><a href="#experience">experience</a></li>
+					<li><a href="#projects">projects</a></li>
+					<li><a href="#skills">skills</a></li>
+					<li><a href="#certifications">certifications</a></li>
+					<li><a href="#volunteer">volunteer</a></li>
+					<li><a href="#about">about</a></li>
+					<li><a href="#resume">resume</a></li>
 					<li><a href="#contact">contact</a></li>
 				</ul>
 			</nav>
@@ -45,7 +46,7 @@
 	<main id="main">
 
 		<!-- Hero -->
-		<section class="hero">
+		<section class="hero" id="top">
 			<div class="container hero-grid">
 				<div>
 					<p class="hero-kicker">// SOC operations &middot; detection engineering &middot; threat hunting</p>
@@ -62,6 +63,9 @@
 							<div><span class="ps1">$</span> <span class="cmd">./current_focus --live</span></div>
 							<div class="typed-line" aria-hidden="true"><span class="out" data-typed='["vulnerability management","threat monitoring &amp; incident response","1,000+ MITRE ATT&amp;CK-mapped threat hunts","detection engineering — KQL / YAML / JSON","Azure AI Foundry agents @ Synergech"]'></span><span class="typed-caret"></span></div>
 							<p class="sr-only">Current focus: vulnerability management, threat monitoring and incident response, MITRE ATT&amp;CK-mapped threat hunting, detection engineering in KQL, YAML, and JSON, and Azure AI Foundry agents at Synergech.</p>
+							<div id="term-out" class="term-out" aria-live="polite"></div>
+							<div class="term-hint out">this terminal is live — type <span class="accent">help</span> and hit enter</div>
+							<div class="term-input-row"><span class="ps1" aria-hidden="true">$</span><input id="term-input" class="term-input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Interactive terminal. Type help and press Enter."></div>
 						</div>
 					</div>
 
@@ -70,8 +74,8 @@
 					<p class="hero-now">&gt; currently: building Azure AI Foundry agent workflows in Python at Synergech.</p>
 
 					<ul class="btn-row">
-						<li><a class="btn primary" href="projects.html">View projects</a></li>
-						<li><a class="btn" href="internships.html">Work experience</a></li>
+						<li><a class="btn primary" href="#projects">View projects</a></li>
+						<li><a class="btn" href="#experience">Work experience</a></li>
 						<li><a class="btn" href="#contact">Contact</a></li>
 					</ul>
 				</div>
@@ -83,22 +87,112 @@
 		</section>
 
 		<!-- Stats -->
-		<section class="section">
+		<section class="section" id="stats">
 			<div class="container">
 				<h2 class="section-title">By the numbers</h2>
 				<ul class="stats">
-					<li><span class="num">3+</span><span class="lbl">years in security operations</span></li>
-					<li><span class="num">1,000+</span><span class="lbl">MITRE ATT&amp;CK-mapped threat hunts</span></li>
-					<li><span class="num">100+</span><span class="lbl">detection rules built (KQL, YAML, JSON)</span></li>
-					<li><span class="num">550+</span><span class="lbl">true-positive malware files investigated</span></li>
+					<li><span class="num" data-count="3" data-suffix="+">3+</span><span class="lbl">years in security operations</span></li>
+					<li><span class="num" data-count="1000" data-suffix="+">1,000+</span><span class="lbl">MITRE ATT&amp;CK-mapped threat hunts</span></li>
+					<li><span class="num" data-count="100" data-suffix="+">100+</span><span class="lbl">detection rules built (KQL, YAML, JSON)</span></li>
+					<li><span class="num" data-count="550" data-suffix="+">550+</span><span class="lbl">true-positive malware files investigated</span></li>
 				</ul>
 			</div>
 		</section>
 
-		<!-- Featured work -->
-		<section class="section">
+		<!-- Experience -->
+		<section class="section" id="experience">
 			<div class="container">
-				<h2 class="section-title">Featured work</h2>
+				<h2 class="section-title">Work experience</h2>
+				<ol class="timeline">
+
+					<li class="t-entry">
+						<span class="t-date">Jun 2026 — Present</span>
+						<h3>Trainee Python Developer</h3>
+						<p class="t-org">Synergech Technology Solutions &middot; Alpharetta, GA</p>
+						<ul>
+							<li>Building Azure AI Foundry agent workflows in Python: Agent, Thread, Run, and Tool primitives, function calling, and a tool registry.</li>
+							<li>Full-stack contributions (C#/.NET backend, Angular frontend) on Omega, an insurance underwriting platform.</li>
+						</ul>
+						<ul class="tags">
+							<li class="tag hl">Python</li>
+							<li class="tag">Azure AI Foundry</li>
+							<li class="tag">C# / .NET</li>
+							<li class="tag">Angular</li>
+						</ul>
+					</li>
+
+					<li class="t-entry">
+						<span class="t-date">Jul 2025 — Jun 2026</span>
+						<h3>Cyber Security Analyst</h3>
+						<p class="t-org">JustLabs by StableCoupons &middot; New York, NY</p>
+						<ul>
+							<li>Performed risk assessments and security reviews for humanitarian projects, reducing security incidents by 30%.</li>
+							<li>Managed firewall rules and security configurations via Git, cutting vulnerability exposure by 25%.</li>
+						</ul>
+						<ul class="tags">
+							<li class="tag hl">Risk assessment</li>
+							<li class="tag">Firewalls</li>
+							<li class="tag">Git</li>
+							<li class="tag">Security review</li>
+						</ul>
+					</li>
+
+					<li class="t-entry">
+						<span class="t-date">Apr 2021 — Aug 2023</span>
+						<h3>Cybersecurity Analyst &middot; Defender Endpoint Expert &middot; Threat Hunter</h3>
+						<p class="t-org"><a href="https://www.ltimindtree.com/about-us/" target="_blank" rel="noopener">LTIMindtree</a> &middot; Chennai, India</p>
+						<ul>
+							<li>Ran 1,000+ threat hunts mapped to MITRE ATT&amp;CK, cutting mean response time by 30&ndash;35%.</li>
+							<li>Investigated 550+ true-positive malware files and audited 200 critical alerts, cutting incident-response time by 40%.</li>
+							<li>Built 100+ detection rules (KQL, YAML, JSON) and incident-response playbooks.</li>
+							<li>Led 100+ security awareness sessions.</li>
+						</ul>
+						<ul class="tags">
+							<li class="tag hl">Microsoft Defender EDR/MDR</li>
+							<li class="tag">KQL</li>
+							<li class="tag">MITRE ATT&amp;CK</li>
+							<li class="tag">Threat hunting</li>
+							<li class="tag">Incident response</li>
+						</ul>
+					</li>
+
+					<li class="t-entry">
+						<span class="t-date">Feb 2024 — Sep 2024</span>
+						<h3>Security Engineer Intern &middot; Cyber Range Student Assistant</h3>
+						<p class="t-org"><a href="https://www.cantonica.com/AboutUs" target="_blank" rel="noopener">Cantonica Inc.</a> &amp; <a href="https://www.pace.edu/seidenberg" target="_blank" rel="noopener">Pace University Cyber Range</a> &middot; New York, NY</p>
+						<ul>
+							<li>Ran vulnerability assessments and CVSS-based patch prioritization (Nessus, Nmap); remediated SQLi, XSS, and CSRF findings, cutting attack surface by 40%.</li>
+							<li>Ran a Windows-based OT/ICS lab (Wazuh, GrassMarlin, OpenVAS) for 30+ users in the Con Edison OT Training Series.</li>
+						</ul>
+						<ul class="tags">
+							<li class="tag hl">Nessus</li>
+							<li class="tag">Nmap</li>
+							<li class="tag">CVSS</li>
+							<li class="tag">OT/ICS</li>
+							<li class="tag">Wazuh</li>
+						</ul>
+					</li>
+
+				</ol>
+
+				<h2 class="section-sub">Education</h2>
+				<div class="card-grid">
+					<div class="card">
+						<h3>M.S. Cybersecurity</h3>
+						<p>Pace University &middot; May 2025</p>
+					</div>
+					<div class="card">
+						<h3>B.E. Computer Science &amp; Engineering</h3>
+						<p>Anna University &middot; April 2020</p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<!-- Projects -->
+		<section class="section" id="projects">
+			<div class="container">
+				<h2 class="section-title">Projects</h2>
 				<div class="card-grid">
 
 					<article class="card det-card">
@@ -107,13 +201,14 @@
 							<span class="det-status">active</span>
 						</div>
 						<h3>TerraGuard</h3>
-						<p>Python static analysis for Terraform infrastructure code &mdash; scans AWS configurations for security misconfigurations and generates remediation reports.</p>
+						<p>Python static-analysis tool that scans Terraform infrastructure code for AWS security misconfigurations across services like S3, RDS, IAM, and VPC, with a modular rule engine and HTML remediation reports.</p>
 						<ul class="tags">
 							<li class="tag hl">Python</li>
 							<li class="tag">Terraform</li>
 							<li class="tag">AWS</li>
+							<li class="tag">Static analysis</li>
 						</ul>
-						<p class="det-impact">detects 20+ Terraform/AWS misconfigurations.</p>
+						<p class="det-impact">detects 20+ Terraform/AWS misconfigurations with remediation guidance.</p>
 						<ul class="btn-row det-links">
 							<li><a class="btn" href="https://github.com/gokulsatya/TerraGuard" target="_blank" rel="noopener">source on GitHub</a></li>
 						</ul>
@@ -125,11 +220,13 @@
 							<span class="det-status">active</span>
 						</div>
 						<h3>PhishGuard</h3>
-						<p>Chrome extension backed by a Flask API that classifies URLs with Random Forest and LSTM models to flag phishing in real time.</p>
+						<p>Chrome extension backed by a Flask API that classifies URLs with Random Forest and LSTM models to flag phishing attempts in real time.</p>
 						<ul class="tags">
 							<li class="tag hl">Python</li>
 							<li class="tag">Flask</li>
-							<li class="tag">RF / LSTM</li>
+							<li class="tag">Random Forest</li>
+							<li class="tag">LSTM</li>
+							<li class="tag">Chrome extension</li>
 						</ul>
 						<p class="det-impact">94% phishing-detection accuracy.</p>
 						<ul class="btn-row det-links">
@@ -138,9 +235,309 @@
 					</article>
 
 				</div>
-				<ul class="btn-row">
-					<li><a class="btn" href="projects.html">All projects &rarr;</a></li>
-				</ul>
+
+				<h2 class="section-sub">Academic &amp; lab work</h2>
+				<div class="card-grid">
+
+					<article class="card">
+						<h3>ToadBud</h3>
+						<p>Chrome extension using the VirusTotal API to analyze URLs, IP addresses, and file hashes, returning instant threat assessments with educational security insights.</p>
+						<ul class="tags">
+							<li class="tag">JavaScript</li>
+							<li class="tag">VirusTotal API</li>
+							<li class="tag">Tailwind CSS</li>
+						</ul>
+						<ul class="btn-row det-links">
+							<li><a class="btn" href="https://github.com/gokulsatya/TOADBUD" target="_blank" rel="noopener">source on GitHub</a></li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>Network defense for Luna Bags</h3>
+						<p>Built a DMZ-hosted Apache site with HTTPS/TLS, enforced router firewall policies between DMZ and internal network, and deployed Snort IDS with Splunk as SIEM.</p>
+						<ul class="tags">
+							<li class="tag">Apache</li>
+							<li class="tag">TLS</li>
+							<li class="tag">Snort</li>
+							<li class="tag">Splunk</li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>ICMP redirect attack case study</h3>
+						<p>Executed and analyzed ICMP redirect attacks in a virtualized lab with Scapy, then documented mitigations: disabling redirects, filtering, monitoring, and traffic-integrity controls.</p>
+						<ul class="tags">
+							<li class="tag">Scapy</li>
+							<li class="tag">Python</li>
+							<li class="tag">Network security</li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>pfSense firewall configuration challenge</h3>
+						<p>Configured NAT and iptables rules to allow only essential traffic (HTTP, HTTPS, SSH) with implicit deny, and hardened host firewalls across Ubuntu, Windows, and Linux servers.</p>
+						<ul class="tags">
+							<li class="tag">pfSense</li>
+							<li class="tag">iptables</li>
+							<li class="tag">Windows Firewall</li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>EPRS — Electricity Plan Recommendation System</h3>
+						<p>Collaborative-filtering recommendation system built in Python using KNN and SVM.</p>
+						<ul class="tags">
+							<li class="tag">Python</li>
+							<li class="tag">Machine learning</li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>EssayBuild Education</h3>
+						<p>Automated essay grading and validation tool for teachers, built on modified BERT and GPT-2 language models.</p>
+						<ul class="tags">
+							<li class="tag">BERT</li>
+							<li class="tag">GPT-2</li>
+							<li class="tag">NLP</li>
+						</ul>
+					</article>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- Skills -->
+		<section class="section" id="skills">
+			<div class="container">
+				<h2 class="section-title">Technical skills</h2>
+				<div class="skills-grid">
+
+					<div class="card">
+						<h3>Vulnerability &amp; Patch Management</h3>
+						<ul class="tags">
+							<li class="tag">Nessus</li>
+							<li class="tag">Nmap</li>
+							<li class="tag">Burp Suite</li>
+							<li class="tag">CVSS</li>
+						</ul>
+					</div>
+
+					<div class="card">
+						<h3>OT / ICS</h3>
+						<ul class="tags">
+							<li class="tag">Wazuh</li>
+							<li class="tag">GrassMarlin</li>
+							<li class="tag">OpenVAS</li>
+						</ul>
+					</div>
+
+					<div class="card">
+						<h3>SIEM &amp; Monitoring</h3>
+						<ul class="tags">
+							<li class="tag">Splunk</li>
+							<li class="tag">Microsoft Defender EDR/MDR</li>
+							<li class="tag">MITRE ATT&amp;CK</li>
+							<li class="tag">Wireshark</li>
+						</ul>
+					</div>
+
+					<div class="card">
+						<h3>Compliance</h3>
+						<ul class="tags">
+							<li class="tag">HIPAA</li>
+							<li class="tag">NIST</li>
+							<li class="tag">ISO 27001</li>
+							<li class="tag">PCI DSS</li>
+						</ul>
+					</div>
+
+					<div class="card">
+						<h3>Cloud &amp; Identity</h3>
+						<ul class="tags">
+							<li class="tag">Azure</li>
+							<li class="tag">AWS</li>
+							<li class="tag">GCP</li>
+							<li class="tag">Azure AD</li>
+						</ul>
+					</div>
+
+					<div class="card">
+						<h3>Networking</h3>
+						<ul class="tags">
+							<li class="tag">TCP/IP</li>
+							<li class="tag">DNS</li>
+							<li class="tag">HTTP/S</li>
+							<li class="tag">Firewalls</li>
+							<li class="tag">VPN</li>
+							<li class="tag">IDS/IPS</li>
+							<li class="tag">SSL/TLS</li>
+						</ul>
+					</div>
+
+					<div class="card">
+						<h3>Scripting</h3>
+						<ul class="tags">
+							<li class="tag">Python</li>
+							<li class="tag">PowerShell</li>
+							<li class="tag">KQL</li>
+							<li class="tag">SQL</li>
+							<li class="tag">Bash</li>
+							<li class="tag">JavaScript</li>
+							<li class="tag">C</li>
+							<li class="tag">Git</li>
+						</ul>
+					</div>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- Certifications -->
+		<section class="section" id="certifications">
+			<div class="container">
+				<h2 class="section-title">Certifications</h2>
+				<div class="card-grid">
+
+					<article class="card det-card">
+						<div class="det-head">
+							<span>CERT-001 &middot; microsoft</span>
+							<span class="det-status">certified</span>
+						</div>
+						<h3>Microsoft SC-200</h3>
+						<p>Security Operations Analyst Associate &mdash; threat detection, investigation, and response with Microsoft Sentinel, Defender XDR, and KQL.</p>
+						<ul class="tags">
+							<li class="tag hl">Microsoft Sentinel</li>
+							<li class="tag">Defender XDR</li>
+							<li class="tag">KQL</li>
+						</ul>
+					</article>
+
+					<article class="card det-card">
+						<div class="det-head">
+							<span>CERT-002 &middot; comptia</span>
+							<span class="det-status warn">in progress</span>
+						</div>
+						<h3>CompTIA CySA+</h3>
+						<p>Cybersecurity Analyst certification &mdash; security analytics, intrusion detection, and response.</p>
+						<ul class="tags">
+							<li class="tag">Security analytics</li>
+							<li class="tag">Threat detection</li>
+						</ul>
+					</article>
+
+				</div>
+
+				<h2 class="section-sub">Competitions &amp; training reports</h2>
+				<div class="card-grid">
+
+					<article class="card">
+						<h3>NCL Fall 2024 — Team Game</h3>
+						<p>National Cyber League team game scouting report.</p>
+						<ul class="btn-row det-links">
+							<li><a class="btn" href="images/personal/Gokul%20Sathiyamurthy%20-%20NCL%20Fall%202024%20Team%20Game%20Scouting%20Report.pdf" target="_blank" rel="noopener">view report (PDF)</a></li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>NCL Fall 2024 — Individual Game</h3>
+						<p>National Cyber League individual game scouting report.</p>
+						<ul class="btn-row det-links">
+							<li><a class="btn" href="images/personal/Gokul%20Sathiyamurthy%20-%20NCL%20Fall%202024%20Individual%20Game%20Scouting%20Report.pdf" target="_blank" rel="noopener">view report (PDF)</a></li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>Advent of Cyber 2024 — TryHackMe</h3>
+						<p>Completion certificate for TryHackMe&rsquo;s Advent of Cyber 2024.</p>
+						<ul class="btn-row det-links">
+							<li><a class="btn" href="images/personal/Advent%20of%202024.pdf" target="_blank" rel="noopener">view certificate (PDF)</a></li>
+						</ul>
+					</article>
+
+				</div>
+			</div>
+		</section>
+
+		<!-- Volunteer -->
+		<section class="section" id="volunteer">
+			<div class="container">
+				<h2 class="section-title">Volunteer &amp; activities</h2>
+				<div class="card-grid">
+
+					<article class="card">
+						<h3>BHUMI NGO</h3>
+						<ul>
+							<li>Facilitated societal change through education, volunteerism, and environmental conservation initiatives.</li>
+							<li>Conducted 20+ introductory talk sessions and self-development programs across all age groups during COVID-19.</li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>Study Monk Pvt Ltd</h3>
+						<p class="card-meta">Chennai, India &middot; Sep&ndash;Oct 2018</p>
+						<ul>
+							<li>Guided 30+ students and coordinated coursework navigation assistance.</li>
+							<li>Worked closely with the Educational Consultant to ensure 100% accuracy in coursework review.</li>
+							<li>Planned events that increased attendance by 20% and orientation turnout by 30%.</li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>TECH DUELS debate — Pace University</h3>
+						<p class="card-meta">Data Privacy vs. National Security &middot; April 2024</p>
+						<ul>
+							<li>Advocated for individual data privacy over national security, leading a team of three.</li>
+							<li>Responded to 5 challenging questions from judges and handled 4 audience inquiries.</li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>Cyber risk &amp; insurance model for fintech</h3>
+						<p class="card-meta">with American Technology Services &middot; November 2024</p>
+						<ul>
+							<li>Cross-functional team building a cyber risk insurance product for fintech companies; proposal delivered to the CEO and senior team of ATS.</li>
+							<li>Ranked fintech vulnerabilities against the MITRE framework; dynamic risk-based pricing model secured 1st place among 5 teams.</li>
+						</ul>
+					</article>
+
+				</div>
+
+				<div class="photo-row">
+					<img src="images/project/1712798337708.jpeg" alt="Gokul speaking at the TECH DUELS debate" width="1170" height="775" loading="lazy" decoding="async">
+					<img src="images/project/1712798337798.jpeg" alt="TECH DUELS debate panel at Pace University" width="1170" height="780" loading="lazy" decoding="async">
+					<img src="images/project/cy3.jpeg" alt="Gokul presenting the cyber risk insurance model at American Technology Services" width="1280" height="2275" loading="lazy" decoding="async">
+				</div>
+			</div>
+		</section>
+
+		<!-- About -->
+		<section class="section" id="about">
+			<div class="container">
+				<h2 class="section-title">About</h2>
+
+				<img class="portrait" src="images/personal/WhatsApp Image 2024-08-19 at 23.09.35_bb0e84d7.jpg" alt="Gokul Sathiyamurthy" width="853" height="1280" loading="lazy" decoding="async">
+
+				<p>I&rsquo;m someone who thrives on challenges. Whenever someone tells me something is impossible, my first thought is always &ldquo;how can I make this possible?&rdquo; That mindset drives me in both my personal and professional life.</p>
+
+				<p>Outside of work, I&rsquo;m passionate about sports and fitness. Cricket is one of my favorite activities, and I make time to hit the gym for at least an hour every day &mdash; staying active keeps me balanced, physically and mentally.</p>
+
+				<p>On the football field I play as a defender. I didn&rsquo;t score many goals in that position, but I took pride in preventing the opposition from scoring. Looking back, it&rsquo;s funny how that defensive mindset may have shaped my career &mdash; perhaps that&rsquo;s what drew me to become a Defender endpoint expert in cybersecurity.</p>
+
+				<p>When I&rsquo;m not working or playing sports, I enjoy pushing my boundaries and taking on new challenges. I believe growth comes from stepping outside your comfort zone &mdash; in fitness, in sports, and in professional development.</p>
+			</div>
+		</section>
+
+		<!-- Resume -->
+		<section class="section" id="resume">
+			<div class="container">
+				<h2 class="section-title">Resume</h2>
+				<div class="card">
+					<p>Everything on this page, in one page. Updated July 2026.</p>
+					<ul class="btn-row tight">
+						<li><a class="btn primary" href="images/personal/Gokul-Sathiyamurthy-Resume.pdf" download>Download resume (PDF)</a></li>
+						<li><a class="btn" href="images/personal/Gokul-Sathiyamurthy-Resume.pdf" target="_blank" rel="noopener">Open in new tab</a></li>
+					</ul>
+				</div>
 			</div>
 		</section>
 

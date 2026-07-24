@@ -106,6 +106,19 @@ body::after {
 }
 .skip-link:focus { top: 12px; text-decoration: none; }
 
+/* ---- Scroll progress (XP bar) ---- */
+#progress {
+	position: fixed; top: 0; left: 0; right: 0;
+	height: 3px; z-index: 60;
+	background: var(--grad);
+	transform-origin: 0 50%;
+	transform: scaleX(0);
+	pointer-events: none;
+}
+
+/* Anchor targets clear the sticky header */
+main section[id] { scroll-margin-top: 74px; }
+
 /* ---- Header / nav ---- */
 .site-header {
 	position: sticky; top: 0; z-index: 50;
@@ -146,11 +159,16 @@ body::after {
 	border-radius: 6px;
 }
 .site-nav a:hover { color: var(--accent); background: var(--accent-soft); text-decoration: none; }
+/* Quest log: sections check off once visited; the active one gets brackets */
+.site-nav a.seen::after { content: " \2713"; color: var(--accent); font-size: 10.5px; }
+.site-nav a.active,
 .site-nav a[aria-current="page"] {
 	color: var(--accent);
 	background: var(--accent-soft);
 }
+.site-nav a.active::before,
 .site-nav a[aria-current="page"]::before { content: "["; }
+.site-nav a.active::after,
 .site-nav a[aria-current="page"]::after { content: "]"; }
 
 .nav-toggle {
@@ -216,7 +234,13 @@ main { display: block; }
 .page-lede { color: var(--muted); max-width: 62ch; margin-bottom: 34px; }
 
 /* ---- Hero (index) ---- */
-.hero { padding: 64px 0 30px; }
+.hero {
+	padding: 48px 0 34px;
+	min-height: calc(100vh - 58px);
+	min-height: calc(100svh - 58px);
+	display: flex;
+	align-items: center;
+}
 .hero-grid {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) 260px;
@@ -303,6 +327,19 @@ main { display: block; }
 /* Typed line renders nothing without JS, so only show it when html.js is set */
 .typed-line { display: none; white-space: nowrap; }
 .js .typed-line { display: block; }
+
+/* Interactive terminal input (JS-only feature, hidden without it) */
+.term-hint, .term-input-row { display: none; }
+.js .term-hint { display: block; }
+.js .term-input-row { display: flex; align-items: baseline; gap: 8px; }
+.term-input {
+	flex: 1; min-width: 0;
+	background: transparent; border: 0; outline: 0; padding: 0;
+	color: var(--text); font: inherit;
+	caret-color: var(--accent);
+}
+.term:focus-within { border-color: var(--accent); }
+.term-out div { overflow-wrap: anywhere; white-space: normal; }
 @media (max-width: 480px) {
 	.term-body { font-size: 12.5px; }
 }
@@ -349,6 +386,7 @@ main { display: block; }
 
 /* ---- Buttons ---- */
 .btn-row { display: flex; flex-wrap: wrap; gap: 12px; margin: 22px 0; padding: 0; list-style: none; }
+.btn-row.tight { margin-bottom: 0; }
 .btn {
 	display: inline-block;
 	font-family: var(--mono); font-size: 14px; font-weight: 600;
