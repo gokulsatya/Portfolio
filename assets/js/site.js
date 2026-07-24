@@ -34,6 +34,34 @@
 		});
 	}
 
+	/* ---- Scroll reveal ----
+	   Classes are added here (not in markup) so content is always visible
+	   without JS and under prefers-reduced-motion. */
+	if (!reduceMotion && "IntersectionObserver" in window) {
+		var revealEls = document.querySelectorAll(".card, .stats li, .t-entry, .contact-list li");
+		var io = new IntersectionObserver(function (entries) {
+			entries.forEach(function (entry) {
+				if (entry.isIntersecting) {
+					entry.target.classList.add("in");
+					io.unobserve(entry.target);
+					// Clear the stagger delay once revealed so hover
+					// transitions respond instantly afterwards.
+					window.setTimeout(function () {
+						entry.target.style.transitionDelay = "0ms";
+					}, 950);
+				}
+			});
+		}, { threshold: 0.08, rootMargin: "0px 0px -6% 0px" });
+
+		revealEls.forEach(function (el) {
+			// Stagger siblings so grid batches cascade instead of popping at once
+			var idx = Array.prototype.indexOf.call(el.parentNode.children, el);
+			el.style.transitionDelay = (idx % 6) * 55 + "ms";
+			el.classList.add("reveal");
+			io.observe(el);
+		});
+	}
+
 	/* ---- Typed effect (hero shell prompt) ---- */
 	var typedEl = document.querySelector("[data-typed]");
 	if (typedEl) {
