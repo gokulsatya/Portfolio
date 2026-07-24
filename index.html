@@ -6,10 +6,17 @@
 	<title>Gokul Sathiyamurthy — Cybersecurity Professional</title>
 	<meta name="description" content="Cybersecurity professional with 3+ years across vulnerability management, threat monitoring, and incident response. 1,000+ MITRE ATT&CK-mapped threat hunts, 100+ detection rules, SIEM monitoring, OT/ICS lab experience.">
 	<meta name="theme-color" content="#0a0f14">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Gokul Sathiyamurthy — Cybersecurity Professional">
+	<meta property="og:description" content="3+ years across vulnerability management, threat monitoring, and incident response. 1,000+ MITRE ATT&CK-mapped threat hunts, 100+ detection rules.">
+	<meta property="og:url" content="https://gokulsatya.github.io/Portfolio/">
+	<meta property="og:image" content="https://gokulsatya.github.io/Portfolio/images/personal/WhatsApp%20Image%202024-08-21%20at%2016.57.11_8a3821dd.jpg">
+	<meta name="twitter:card" content="summary">
 	<link rel="icon" type="image/svg+xml" href="favicon.svg">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+	<script>document.documentElement.classList.add('js')</script>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=JetBrains+Mono:wght@400;600;700&display=swap">
 	<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -53,7 +60,8 @@
 							<div><span class="ps1">$</span> <span class="cmd">whoami</span></div>
 							<div class="out">cybersecurity professional &middot; 3+ years</div>
 							<div><span class="ps1">$</span> <span class="cmd">./current_focus --live</span></div>
-							<div class="typed-line"><span class="out" data-typed='["vulnerability management","threat monitoring &amp; incident response","1,000+ MITRE ATT&amp;CK-mapped threat hunts","detection engineering — KQL / YAML / JSON","Azure AI Foundry agents @ Synergech"]'></span><span class="typed-caret" aria-hidden="true"></span></div>
+							<div class="typed-line" aria-hidden="true"><span class="out" data-typed='["vulnerability management","threat monitoring &amp; incident response","1,000+ MITRE ATT&amp;CK-mapped threat hunts","detection engineering — KQL / YAML / JSON","Azure AI Foundry agents @ Synergech"]'></span><span class="typed-caret"></span></div>
+							<p class="sr-only">Current focus: vulnerability management, threat monitoring and incident response, MITRE ATT&amp;CK-mapped threat hunting, detection engineering in KQL, YAML, and JSON, and Azure AI Foundry agents at Synergech.</p>
 						</div>
 					</div>
 
@@ -69,7 +77,7 @@
 				</div>
 
 				<figure class="hero-photo">
-					<img src="images/personal/WhatsApp Image 2024-08-21 at 16.57.11_8a3821dd.jpg" alt="Portrait of Gokul Sathiyamurthy" width="260" height="325">
+					<img src="images/personal/WhatsApp Image 2024-08-21 at 16.57.11_8a3821dd.jpg" alt="Portrait of Gokul Sathiyamurthy" width="863" height="1279" decoding="async">
 				</figure>
 			</div>
 		</section>
@@ -83,6 +91,55 @@
 					<li><span class="num">1,000+</span><span class="lbl">MITRE ATT&amp;CK-mapped threat hunts</span></li>
 					<li><span class="num">100+</span><span class="lbl">detection rules built (KQL, YAML, JSON)</span></li>
 					<li><span class="num">550+</span><span class="lbl">true-positive malware files investigated</span></li>
+				</ul>
+			</div>
+		</section>
+
+		<!-- Featured work -->
+		<section class="section">
+			<div class="container">
+				<h2 class="section-title">Featured work</h2>
+				<div class="card-grid">
+
+					<article class="card det-card">
+						<div class="det-head">
+							<span>DET-001 &middot; iac-security</span>
+							<span class="det-status">active</span>
+						</div>
+						<h3>TerraGuard</h3>
+						<p>Python static analysis for Terraform infrastructure code &mdash; scans AWS configurations for security misconfigurations and generates remediation reports.</p>
+						<ul class="tags">
+							<li class="tag hl">Python</li>
+							<li class="tag">Terraform</li>
+							<li class="tag">AWS</li>
+						</ul>
+						<p class="det-impact">detects 20+ Terraform/AWS misconfigurations.</p>
+						<ul class="btn-row det-links">
+							<li><a class="btn" href="https://github.com/gokulsatya/TerraGuard" target="_blank" rel="noopener">source on GitHub</a></li>
+						</ul>
+					</article>
+
+					<article class="card det-card">
+						<div class="det-head">
+							<span>DET-002 &middot; phishing-ml</span>
+							<span class="det-status">active</span>
+						</div>
+						<h3>PhishGuard</h3>
+						<p>Chrome extension backed by a Flask API that classifies URLs with Random Forest and LSTM models to flag phishing in real time.</p>
+						<ul class="tags">
+							<li class="tag hl">Python</li>
+							<li class="tag">Flask</li>
+							<li class="tag">RF / LSTM</li>
+						</ul>
+						<p class="det-impact">94% phishing-detection accuracy.</p>
+						<ul class="btn-row det-links">
+							<li><a class="btn" href="https://github.com/gokulsatya/PhishGuard" target="_blank" rel="noopener">source on GitHub</a></li>
+						</ul>
+					</article>
+
+				</div>
+				<ul class="btn-row">
+					<li><a class="btn" href="projects.html">All projects &rarr;</a></li>
 				</ul>
 			</div>
 		</section>

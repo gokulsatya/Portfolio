@@ -14,11 +14,10 @@
 	--border-strong: #2a3b4d;
 	--text: #d9e2ec;
 	--muted: #8fa3b5;
-	--faint: #5c7080;
+	--faint: #7d92a4; /* smallest text color still >= 4.5:1 on card bg (WCAG AA) */
 	--accent: #00e097;
 	--accent-soft: rgba(0, 224, 151, 0.12);
 	--accent-glow: rgba(0, 224, 151, 0.25);
-	--accent-ink: #04201642;
 	--on-accent: #041711;
 	--warn: #ffc857;
 	--warn-soft: rgba(255, 200, 87, 0.12);
@@ -149,16 +148,21 @@ body::before {
 }
 .nav-toggle:hover { border-color: var(--accent); color: var(--accent); }
 
-@media (max-width: 860px) {
-	.nav-toggle { display: inline-block; }
-	.site-nav {
+/* Collapse below 960px (8 links + brand need ~900px). Collapse only when JS
+   is available (html.js): without JS the nav stays visible and stacked, so
+   navigation never depends on scripting. */
+@media (max-width: 960px) {
+	.js .nav-toggle { display: inline-block; }
+	.nav-row { flex-wrap: wrap; }
+	.site-nav { flex-basis: 100%; }
+	.js .site-nav {
 		display: none;
 		position: absolute; left: 0; right: 0; top: 100%;
 		background: var(--bg-alt);
 		border-bottom: 1px solid var(--border);
 		box-shadow: 0 18px 30px rgba(0, 0, 0, 0.45);
 	}
-	.site-nav.open { display: block; }
+	.js .site-nav.open { display: block; }
 	.site-nav ul { flex-direction: column; padding: 10px 16px 16px; }
 	.site-nav a { padding: 12px 10px; font-size: 15px; }
 }
@@ -184,8 +188,16 @@ main { display: block; }
 }
 .section-sub::before { content: "## "; color: var(--faint); }
 
-.page-title { font-size: 1.9rem; margin: 46px 0 8px; letter-spacing: -0.01em; }
-.page-title::before { content: "~/"; color: var(--accent); }
+.page-kicker {
+	font-family: var(--mono); font-size: 13px; color: var(--accent);
+	margin: 46px 0 0;
+}
+.page-title {
+	font-size: clamp(1.45rem, 5vw, 1.9rem);
+	margin: 6px 0 8px;
+	letter-spacing: -0.01em;
+	overflow-wrap: anywhere;
+}
 .page-lede { color: var(--muted); max-width: 62ch; margin-bottom: 34px; }
 
 /* ---- Hero (index) ---- */
@@ -221,10 +233,6 @@ main { display: block; }
 	border-radius: 12px;
 	border: 1px solid var(--border-strong);
 	box-shadow: 0 0 0 4px var(--accent-soft), 0 24px 50px rgba(0, 0, 0, 0.5);
-}
-.hero-photo figcaption {
-	font-family: var(--mono); font-size: 12px; color: var(--faint);
-	margin-top: 10px; text-align: center;
 }
 @media (max-width: 760px) {
 	.hero-grid { grid-template-columns: 1fr; }
@@ -263,7 +271,12 @@ main { display: block; }
 .term-body .ps1 { color: var(--accent); }
 .term-body .cmd { color: var(--text); }
 .term-body .out { color: var(--muted); }
-.typed-line { white-space: nowrap; }
+/* Typed line renders nothing without JS, so only show it when html.js is set */
+.typed-line { display: none; white-space: nowrap; }
+.js .typed-line { display: block; }
+@media (max-width: 480px) {
+	.term-body { font-size: 12.5px; }
+}
 .typed-caret {
 	display: inline-block; width: 0.55em; height: 1.1em;
 	background: var(--accent);
@@ -316,7 +329,8 @@ main { display: block; }
 /* ---- Cards ---- */
 .card-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	/* min(100%, …) keeps tracks from overflowing viewports narrower than the min */
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
 	gap: 18px;
 	margin-bottom: 8px;
 }
@@ -406,18 +420,18 @@ main { display: block; }
 /* ---- Skills clusters ---- */
 .skills-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 290px), 1fr));
 	gap: 18px;
 }
 .skills-grid .card h3 { font-size: 0.98rem; color: var(--text); }
-.skills-grid .card h3::before { content: "$ "; color: var(--accent); }
 .skills-grid .tags { margin-bottom: 0; }
 
 /* ---- Contact ---- */
 .contact-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; max-width: 560px; }
 .contact-list li {
-	display: flex; align-items: baseline; gap: 14px;
+	display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px;
 	font-size: 15.5px;
+	overflow-wrap: anywhere;
 	background: var(--card);
 	border: 1px solid var(--border);
 	border-radius: 8px;
@@ -428,6 +442,12 @@ main { display: block; }
 	min-width: 86px;
 }
 .contact-list .k::after { content: ":"; }
+
+/* Meta line under a heading (dates, locations) */
+.card-meta {
+	font-family: var(--mono); font-size: 13px; color: var(--muted);
+	margin: -4px 0 14px;
+}
 
 /* ---- Media / figures ---- */
 .photo-row {
@@ -442,6 +462,7 @@ main { display: block; }
 	width: 100%; height: 100%;
 	object-fit: cover;
 }
+.photo-row.single { max-width: 420px; }
 
 .portrait {
 	float: right;
@@ -463,6 +484,13 @@ main { display: block; }
 	border-radius: var(--radius);
 	background: var(--bg-alt);
 }
+/* Inline PDF viewers are unusable on small screens (iOS Safari renders only
+   the first page); swap the frame for a download prompt instead. */
+.pdf-fallback { display: none; }
+@media (max-width: 700px) {
+	.pdf-frame { display: none; }
+	.pdf-fallback { display: block; }
+}
 
 /* ---- Footer ---- */
 .site-footer {
@@ -482,6 +510,8 @@ main { display: block; }
 .footer-links a { color: var(--muted); }
 .footer-links a:hover { color: var(--accent); }
 
+.center { justify-content: center; }
+
 /* ---- 404 ---- */
 .err-wrap { text-align: center; padding: 90px 0; }
 .err-code {
@@ -489,6 +519,17 @@ main { display: block; }
 	font-weight: 700; color: var(--accent);
 	text-shadow: 0 0 30px var(--accent-glow);
 	margin-bottom: 6px;
+}
+
+/* ---- Print ---- */
+@media print {
+	body { background: #fff; color: #000; }
+	body::before, .site-header, .site-footer, .skip-link,
+	.btn-row, .typed-caret, .prompt-caret, .pdf-frame { display: none !important; }
+	a { color: #000; }
+	.card, .stats li, .contact-list li, .term { border-color: #999; background: #fff; }
+	.term-body .out, .card p, .stats .lbl { color: #333; }
+	.stats .num, .t-date, .page-kicker { color: #000; }
 }
 
 /* ---- Motion preferences ---- */
