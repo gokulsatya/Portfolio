@@ -58,6 +58,23 @@
 		updateProgress();
 	}
 
+	/* ---- Cursor spotlight (mouse-only; CSS gates visibility) ---- */
+	var spot = document.getElementById("spotlight");
+	if (spot && !reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+		var spotTick = false;
+		var sx = -1000, sy = -1000;
+		window.addEventListener("pointermove", function (e) {
+			sx = e.clientX; sy = e.clientY;
+			if (!spotTick) {
+				spotTick = true;
+				window.requestAnimationFrame(function () {
+					spot.style.transform = "translate3d(" + (sx - 320) + "px," + (sy - 320) + "px,0)";
+					spotTick = false;
+				});
+			}
+		}, { passive: true });
+	}
+
 	/* ---- Scrollspy + quest log (nav checkmarks) ---- */
 	var sections = document.querySelectorAll("main section[id]");
 	var navLinks = {};
