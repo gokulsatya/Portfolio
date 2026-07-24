@@ -4,6 +4,70 @@
 
 	var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
+	/* ---- Boot preloader (state decided pre-paint in the head script) ---- */
+	var boot = document.getElementById("boot");
+	var bootLines = document.getElementById("boot-lines");
+	if (boot && bootLines && document.documentElement.classList.contains("booting")) {
+		var bootDone = false;
+		var finishBoot = function () {
+			if (bootDone) return;
+			bootDone = true;
+			try { sessionStorage.setItem("booted", "1"); } catch (e) {}
+			boot.classList.add("done");
+			window.setTimeout(function () {
+				boot.remove();
+				document.documentElement.classList.remove("booting");
+			}, 520);
+		};
+		var lines = [
+			"> init gokul.soc — portfolio v3",
+			"> loading detection rules ....... 100+ [ok]",
+			"> mapping ATT&CK threat hunts ... 1,000+ [ok]",
+			"> access granted — welcome"
+		];
+		var li = 0;
+		var addLine = function () {
+			if (li < lines.length) {
+				var d = document.createElement("div");
+				if (lines[li].indexOf("[ok]") !== -1 || li === lines.length - 1) d.className = "ok";
+				d.textContent = lines[li];
+				bootLines.appendChild(d);
+				li++;
+				window.setTimeout(addLine, 230);
+			} else {
+				window.setTimeout(finishBoot, 380);
+			}
+		};
+		window.setTimeout(addLine, 120);
+		window.setTimeout(finishBoot, 2600); // hard safety: never trap the visitor
+	} else {
+		document.documentElement.classList.remove("booting");
+	}
+
+	/* ---- Cursor ring (accent that trails the native cursor) ---- */
+	var ring = document.getElementById("cursor-ring");
+	if (ring && !reduceMotion && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+		var ringTick = false;
+		var ringX = -1000, ringY = -1000;
+		window.addEventListener("pointermove", function (e) {
+			ringX = e.clientX; ringY = e.clientY;
+			if (!ringTick) {
+				ringTick = true;
+				window.requestAnimationFrame(function () {
+					ring.style.transform = "translate3d(" + (ringX - 17) + "px," + (ringY - 17) + "px,0)";
+					ringTick = false;
+				});
+			}
+		}, { passive: true });
+		document.addEventListener("mouseover", function (e) {
+			if (e.target.closest("a, button, input")) {
+				ring.classList.add("grow");
+			} else {
+				ring.classList.remove("grow");
+			}
+		});
+	}
+
 	/* ---- Mobile nav toggle ---- */
 	var toggle = document.querySelector(".nav-toggle");
 	var nav = document.getElementById("site-nav");
